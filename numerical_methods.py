@@ -30,11 +30,11 @@ import numpy as np
 
 def calculate_h(M, T, eps, num_method):
     calc_h_func = None
-    if num_method == forward_euler:
-        calc_h_func = forward_euler_h
+    # if num_method == forward_euler:
+    #     calc_h_func = forward_euler_h
     
     if calc_h_func is None:
-        raise NotImplementedError
+        return 0.1
     else:
         return calc_h_func(M, T, eps)
 
