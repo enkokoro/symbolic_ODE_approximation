@@ -68,7 +68,10 @@ def forward_euler_h(M, L, T, eps):
     """
     return eps*2*L/(M*np.exp(L*T)-1)
 
-def runge_kutta_4(f, x0, T, h):
-    def rk4_onestep(f, ti, xi, h):
-        # TODO
-        pass
+def midpoint_method(f, x0, T, h):
+    def midpoint_onestep(f, ti, xi, h):
+        K1 = f(ti, xi)
+        K2 = f(ti + h/2, xi + h/2 * K1)
+        return xi + h*K2
+    
+    return ODE_onestep(f, x0, T, h, midpoint_onestep)
