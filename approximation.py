@@ -1,7 +1,7 @@
 import sympy
 from numerical_methods import calculate_h, forward_euler
 
-def ODE_approx(f, dim, M, L, T, eps=1e-5, h=None, num_method=forward_euler, spline_deg=1):
+def ODE_approx(f, dim, T, h=None, num_method=forward_euler, spline_deg=1):
     """ 
     symbolic function approximation to solution of
     x'(t) = f(t, x) for 0 <= t <= T
@@ -17,8 +17,6 @@ def ODE_approx(f, dim, M, L, T, eps=1e-5, h=None, num_method=forward_euler, spli
     output
     x_approx(x0, t): function which approximates solution to x'(t) = f(t, x) within eps
     """
-    if h is None:
-        h = calculate_h(M, L, T, eps, num_method)
     _x0 = sympy.Matrix([sympy.symbols("_x"+str(i)) for i in range(1, dim+1)])
     ts, xs = num_method(f, _x0, T, h)
 
