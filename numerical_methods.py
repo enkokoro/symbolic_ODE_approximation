@@ -52,7 +52,7 @@ def ODE_onestep(f, x0, T, h, onestep):
 
     ts.append(T)
     h_last = ts[-1] - ts[-2]
-    xs.append(xs[-2] + h_last*f(ts[-2], xs[-2]))
+    xs.append(xs[-1] + h_last*f(ts[-1], xs[-1]))
     return ts, xs
 
 def forward_euler(f, x0, T, h):
