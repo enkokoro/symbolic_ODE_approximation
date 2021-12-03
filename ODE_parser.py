@@ -35,6 +35,6 @@ def ODE_parser(ODE):
     
     time_part = ODE[a+1:-1]
     T_idx = time_part.replace(" ", "").index("t<=") + len("t<=")
-    T = float(time_part[T_idx:])
+    T = sympy.sympify(time_part[T_idx:])
     return True, ode_vars, ode_func, T
 

@@ -1,0 +1,28 @@
+﻿/* Exported from KeYmaera X v4.9.5 */
+
+Theorem "project-dghost"
+
+
+ProgramVariables  
+  Real x;  
+End.  
+    
+Problem
+  x > 0 -> [{x'=-x}] x > 0
+End.
+
+Tactic "project-dghost: Proof"
+implyR('R=="x>0->[{x'=-x}]x>0");
+dG("y'=y/2", "x*y^2=1", 'R=="[{x'=-x}]x>0");
+existsR("1/x^(1/2)", 'R=="\exists y [{x'=-x,y'=1/2*y+0}]x*y^2=1");
+dIRule('R=="[{x'=-x,y'=1/2*y+0}]x*y^2=1"); <(
+  "dI Init":
+    auto,
+  "dI Step":
+    Dassignb('R=="[y':=1/2*y+0;]#[x':=-x;]x'*y^2+x*(2*y^(2-1)*y')=0#");
+    Dassignb('R=="[y':=1/2*y+0;](-x)*y^2+x*(2*y^(2-1)*y')=0");
+    auto
+)
+End.
+
+End.

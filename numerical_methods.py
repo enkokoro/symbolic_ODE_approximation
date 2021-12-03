@@ -29,6 +29,7 @@ numerical_method_h(M, T, eps)
 """
 import numpy as np
 
+
 def calculate_h(M, L, T, eps, num_method):
     calc_h_func = None
     if num_method == forward_euler:
@@ -75,3 +76,9 @@ def midpoint_method(f, x0, T, h):
         return xi + h*K2
     
     return ODE_onestep(f, x0, T, h, midpoint_onestep)
+
+def modified_euler(f, x0, T, h):
+    def modified_euler_onestep(f, ti, xi, h):
+        K1 = f(ti, xi)
+        K2 = f(ti + h, xi + h * K1)
+        return xi + (h/2)*(K1+K2)

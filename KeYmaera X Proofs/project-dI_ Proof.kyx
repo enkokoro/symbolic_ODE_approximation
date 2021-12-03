@@ -1,0 +1,30 @@
+﻿/* Exported from KeYmaera X v4.9.5 */
+
+Theorem "project-dI"
+
+
+ProgramVariables  
+  Real x;  
+  Real y;
+  Real r;
+End.  
+    
+Problem
+  x^2 + y^2 = r^2 -> [{x'=-y, y'=x}] x^2 + y^2 = r^2
+End.
+
+Tactic "project-dI: Proof"
+implyR('R=="x^2+y^2=r^2->[{x'=-y,y'=x}]x^2+y^2=r^2");
+dIRule('R=="[{x'=-y,y'=x}]x^2+y^2=r^2"); <(
+  "dI Init":
+    id,
+  "dI Step":
+    Dassignb('R=="[y':=x;]#[x':=-y;]2*x^(2-1)*x'+2*y^(2-1)*y'=0#");
+    Dassignb('R=="[y':=x;]2*x^(2-1)*(-y)+2*y^(2-1)*y'=0");
+    hideL('L=="x_0^2+y_0^2=r()^2");
+    hideL('L=="true");
+    auto
+)
+End.
+
+End.

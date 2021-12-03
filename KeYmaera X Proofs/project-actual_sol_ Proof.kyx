@@ -1,0 +1,22 @@
+﻿/* Exported from KeYmaera X v4.9.5 */
+
+Theorem "project-actual_sol"
+
+
+ProgramVariables  
+  Real x;  
+End.  
+    
+Problem
+  x > 0 -> [{x'=2}]x > 0
+End.
+
+Tactic "project-actual_sol: Proof"
+implyR('R=="x>0->[{x'=2}]x>0");
+solve('R=="[{x'=2}]x>0");
+allR('R=="\forall t_ (t_>=0->2*t_+x>0)");
+implyR('R=="t_>=0->2*t_+x>0");
+auto
+End.
+
+End.
