@@ -1,5 +1,7 @@
 # symbolic_ODE_approximation
-15424 Cyber Physical Systems Final Project: Symbolic ODE Approximation
+15424 Fall 2021 Logical Foundations of Cyber Physical Systems Final Project: Symbolic ODE Approximation
+
+https://lfcps.org/course/lfcps-projects.html
 
 Language: python
 
